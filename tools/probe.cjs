@@ -157,6 +157,7 @@ async function run(width, height, tag) {
   check(tag + ": both sides attack (alternating tape)", bothAttacks.buy > 0 && bothAttacks.sell > 0, bothAttacks);
   check(tag + ": strikes land (hits > 0)", c.hit > 0, c);
   // deterministic: a guard that is up at contact must stop the blade
+  await page.evaluate("window.__duel.reset(); window.__duel.hold(true)");
   const before = await page.evaluate("window.__duel.state().contacts");
   await page.evaluate("window.__duel.exchange('buy','LUNGE')");
   await sleep(1100);

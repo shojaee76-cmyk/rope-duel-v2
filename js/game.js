@@ -298,6 +298,7 @@
     forceKo: function (winner) { duel._ko(winner === "buy" ? "sell" : "buy", winner); },
     exchange: function (side, move) {
       var def = side === "buy" ? "sell" : "buy";
+      duel.pairGap = duel.baseGap * 0.8; // put them in measure at contact range
       duel.cats[def].state = "guard"; duel.cats[def].stateT = 0; duel.cats[def].stateDur = 1.2;
       return duel._startMove(side, move || "LUNGE");
     },
