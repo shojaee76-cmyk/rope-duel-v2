@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════
    ROPE DUEL - core tokens, backdrop, topbar, fighter plates
    ═══════════════════════════════════════════════════════════ */
-@font-face{font-family:"Archivo Black";src:url("../fonts/archivo-black-400.woff2") format("woff2");font-weight:400;font-display:swap;}
+@font-face{font-family:"Instrument Serif";src:url("../fonts/iserif-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:"Instrument Serif";src:url("../fonts/iserif-400i.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap;}
 @font-face{font-family:"Space Mono";src:url("../fonts/space-mono-400.woff2") format("woff2");font-weight:400;font-display:swap;}
 @font-face{font-family:"Space Mono";src:url("../fonts/space-mono-700.woff2") format("woff2");font-weight:700;font-display:swap;}
-@font-face{font-family:"Barlow Condensed";src:url("../fonts/barlow-condensed-700.woff2") format("woff2");font-weight:700;font-display:swap;}
 
 :root{
   --bg:#0A0B0D;          /* near-black void */
@@ -24,9 +24,9 @@
   --r:14px;              /* ONE radius */
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-snap:cubic-bezier(.34,1.56,.64,1);
-  --font-display:"Archivo Black",sans-serif;
+  --font-display:"Instrument Serif",Georgia,serif;
   --font-mono:"Space Mono",monospace;
-  --font-cond:"Barlow Condensed",sans-serif;
+  --font-cond:"Space Mono",monospace;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -103,16 +103,16 @@ body{
 }
 .brand{display:flex;flex-direction:column;gap:2px;}
 .brand-mark{
-  font-family:var(--font-display);font-size:clamp(16px,2.2vw,22px);
-  letter-spacing:.02em;line-height:1;color:var(--ink);
+  font-family:var(--font-display);font-size:clamp(22px,3vw,32px);
+  letter-spacing:.005em;line-height:.95;color:var(--ink);
   text-shadow:0 2px 18px rgba(240,180,41,.18);
 }
 .brand-sub{font-size:10px;letter-spacing:.26em;color:var(--ink-faint);}
 
 .priceblock{display:flex;flex-direction:column;align-items:center;gap:2px;transform:translateY(-2px);}
 .price{
-  font-family:var(--font-cond);font-weight:700;
-  font-size:clamp(30px,6vw,58px);line-height:.95;letter-spacing:.01em;
+  font-family:var(--font-mono);font-weight:700;
+  font-size:clamp(26px,5.2vw,50px);line-height:1;letter-spacing:-.045em;
   color:var(--amber);font-variant-numeric:tabular-nums;
   text-shadow:0 0 26px rgba(240,180,41,.28);
   transition:color .18s var(--ease),text-shadow .18s var(--ease);
@@ -162,8 +162,8 @@ body{
 .tag{font-size:10px;letter-spacing:.18em;color:var(--ink-dim);}
 .fighter--buy .tag{color:var(--buy);}
 .fighter--sell .tag{color:var(--sell);}
-.rounds{font-family:var(--font-cond);font-weight:700;font-size:22px;line-height:1;color:var(--ink);}
-.fighter-name{font-family:var(--font-display);font-size:clamp(14px,1.7vw,18px);line-height:1.05;letter-spacing:.01em;}
+.rounds{font-family:var(--font-mono);font-weight:700;font-size:18px;line-height:1;color:var(--ink);}
+.fighter-name{font-family:var(--font-display);font-size:clamp(18px,2.2vw,24px);line-height:1;letter-spacing:.01em;}
 .fighter-role{font-size:10px;letter-spacing:.06em;color:var(--ink-faint);margin-top:2px;text-transform:uppercase;}
 .bar{height:6px;border-radius:var(--r);background:rgba(255,255,255,.07);margin:10px 0 8px;overflow:hidden;}
 .fighter--sell .bar{transform:scaleX(-1);}

@@ -35,7 +35,7 @@ async function run(width, height, tag) {
 
   // ── 2. fonts actually render (render-hash, not fonts.check)
   const fontOk = await page.evaluate(() => {
-    const faces = ["Archivo Black", "Space Mono"];
+    const faces = ["Instrument Serif", "Space Mono"];
     const hash = (face) => {
       const c = document.createElement("canvas"); c.width = 220; c.height = 60;
       const x = c.getContext("2d");

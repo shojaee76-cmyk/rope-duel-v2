@@ -20,9 +20,9 @@
 #meter-sell{right:0;background:linear-gradient(270deg,var(--sell-deep),var(--sell));box-shadow:0 0 18px rgba(239,83,80,.5);}
 .meter-mid{position:absolute;top:-4px;bottom:-4px;left:50%;width:2px;background:var(--amber);box-shadow:0 0 10px var(--amber);transform:translateX(-1px);transition:left .22s linear;}
 .meter-foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:10px;letter-spacing:.1em;}
-.pct{font-family:var(--font-cond);font-size:14px;font-weight:700;color:var(--ink);}
+.pct{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--ink);}
 #pct-buy{color:var(--buy);} #pct-sell{color:var(--sell);}
-.hint{color:var(--ink-faint);letter-spacing:.12em;text-transform:uppercase;}
+.hint{color:#A7AEBA;font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
 
 /* ── chart panel ───────────────────────────────────────── */
 .chart{
@@ -35,7 +35,7 @@
   display:flex;flex-direction:column;gap:6px;
 }
 .chart-head{display:flex;justify-content:space-between;align-items:center;}
-.chart-title{font-size:10px;letter-spacing:.22em;color:var(--ink-faint);}
+.chart-title{font-size:10px;letter-spacing:.2em;color:#9AA1AC;}
 .chip{font-size:9px;letter-spacing:.1em;padding:3px 6px;border-radius:var(--r);border:1px solid var(--line);color:var(--ink-dim);}
 #chart-canvas{width:100%;flex:1;display:block;border-radius:calc(var(--r) - 6px);}
 
@@ -50,7 +50,7 @@
   animation:calloutIn .3s var(--ease-snap) both, calloutOut .5s var(--ease) 1.9s both;
   will-change:transform,opacity;
 }
-.callout b{font-family:var(--font-cond);font-size:15px;letter-spacing:.02em;}
+.callout b{font-family:var(--font-mono);font-size:13px;letter-spacing:.01em;}
 .callout.buy{border-color:rgba(53,208,127,.55);} .callout.buy b{color:var(--buy);}
 .callout.sell{border-color:rgba(239,83,80,.55);} .callout.sell b{color:var(--sell);}
 .callout.whale{border-color:var(--amber);box-shadow:0 0 0 1px rgba(240,180,41,.4),0 14px 34px -12px rgba(240,180,41,.35);}
@@ -74,8 +74,8 @@
 }
 @keyframes bannerIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
 .banner-kicker{font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:10px;}
-.banner-title{font-family:var(--font-display);font-size:clamp(22px,4vw,36px);line-height:1.02;margin-bottom:14px;}
-.banner-price{font-family:var(--font-cond);font-size:clamp(34px,7vw,58px);font-weight:700;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums;}
+.banner-title{font-family:var(--font-display);font-size:clamp(28px,5vw,46px);line-height:1;margin-bottom:14px;letter-spacing:.005em;}
+.banner-price{font-family:var(--font-mono);font-size:clamp(26px,5vw,44px);font-weight:700;color:var(--amber);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;}
 .banner-sub{margin-top:10px;font-size:12px;letter-spacing:.14em;color:var(--ink-dim);text-transform:uppercase;}
 
 /* ── boot ──────────────────────────────────────────────── */
@@ -86,7 +86,7 @@
 .boot[hidden]{display:none;}
 .boot.done{opacity:0;visibility:hidden;pointer-events:none;}
 .boot-inner{text-align:center;}
-.boot-mark{font-family:var(--font-display);font-size:clamp(26px,5vw,44px);letter-spacing:.02em;color:var(--ink);}
+.boot-mark{font-family:var(--font-display);font-size:clamp(34px,7vw,64px);letter-spacing:.005em;color:var(--ink);}
 .boot-line{margin-top:12px;font-size:11px;letter-spacing:.22em;color:var(--ink-dim);}
 .boot-bar{margin:18px auto 0;width:220px;height:3px;background:rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;}
 .boot-bar span{display:block;height:100%;width:0%;background:var(--amber);transition:width .4s var(--ease);}
