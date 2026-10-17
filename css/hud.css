@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════════════════════════
+   ROPE DUEL - pressure meter, chart, callouts, banner, boot
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── pressure meter ────────────────────────────────────── */
+.meter-wrap{
+  position:absolute;left:50%;bottom:20px;transform:translateX(-50%);
+  width:min(680px,86vw);z-index:11;
+  padding:12px 14px 10px;border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(20,23,28,.9),rgba(10,12,15,.92));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(12px);
+  box-shadow:0 20px 48px -22px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.meter-label{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.2em;color:var(--ink-dim);margin-bottom:8px;}
+.duel-state{color:var(--amber);font-weight:700;letter-spacing:.16em;}
+.meter{position:relative;height:14px;border-radius:var(--r);background:#070809;border:1px solid var(--line);overflow:hidden;}
+.meter-fill{position:absolute;top:0;bottom:0;width:50%;transition:width .22s linear;}
+#meter-buy{left:0;background:linear-gradient(90deg,var(--buy-deep),var(--buy));box-shadow:0 0 18px rgba(53,208,127,.5);}
+#meter-sell{right:0;background:linear-gradient(270deg,var(--sell-deep),var(--sell));box-shadow:0 0 18px rgba(239,83,80,.5);}
+.meter-mid{position:absolute;top:-4px;bottom:-4px;left:50%;width:2px;background:var(--amber);box-shadow:0 0 10px var(--amber);transform:translateX(-1px);transition:left .22s linear;}
+.meter-foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:10px;letter-spacing:.1em;}
+.pct{font-family:var(--font-cond);font-size:14px;font-weight:700;color:var(--ink);}
+#pct-buy{color:var(--buy);} #pct-sell{color:var(--sell);}
+.hint{color:var(--ink-faint);letter-spacing:.12em;text-transform:uppercase;}
+
+/* ── chart panel ───────────────────────────────────────── */
+.chart{
+  position:absolute;right:20px;bottom:96px;z-index:10;
+  width:min(320px,42vw);height:150px;
+  padding:10px 10px 8px;border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(18,21,26,.9),rgba(9,11,14,.92));
+  border:1px solid var(--line-2);backdrop-filter:blur(10px);
+  box-shadow:0 18px 40px -20px rgba(0,0,0,.9);
+  display:flex;flex-direction:column;gap:6px;
+}
+.chart-head{display:flex;justify-content:space-between;align-items:center;}
+.chart-title{font-size:10px;letter-spacing:.22em;color:var(--ink-faint);}
+.chip{font-size:9px;letter-spacing:.1em;padding:3px 6px;border-radius:var(--r);border:1px solid var(--line);color:var(--ink-dim);}
+#chart-canvas{width:100%;flex:1;display:block;border-radius:calc(var(--r) - 6px);}
+
+/* ── callouts ──────────────────────────────────────────── */
+.callouts{position:absolute;inset:0;z-index:9;pointer-events:none;overflow:hidden;}
+.callout{
+  position:absolute;transform:translate(-50%,-50%);
+  padding:8px 12px;border-radius:var(--r);
+  background:rgba(10,12,15,.92);border:1px solid var(--line-2);
+  font-size:11px;letter-spacing:.06em;white-space:nowrap;
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.9);
+  animation:calloutIn .3s var(--ease-snap) both, calloutOut .5s var(--ease) 1.9s both;
+  will-change:transform,opacity;
+}
+.callout b{font-family:var(--font-cond);font-size:15px;letter-spacing:.02em;}
+.callout.buy{border-color:rgba(53,208,127,.55);} .callout.buy b{color:var(--buy);}
+.callout.sell{border-color:rgba(239,83,80,.55);} .callout.sell b{color:var(--sell);}
+.callout.whale{border-color:var(--amber);box-shadow:0 0 0 1px rgba(240,180,41,.4),0 14px 34px -12px rgba(240,180,41,.35);}
+.callout.whale b{color:var(--amber);}
+@keyframes calloutIn{from{opacity:0;transform:translate(-50%,-30%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes calloutOut{to{opacity:0;transform:translate(-50%,-90%) scale(.96)}}
+
+/* ── round banner ──────────────────────────────────────── */
+.banner[hidden]{display:none;}
+.banner{  position:absolute;inset:0;z-index:14;display:grid;place-items:center;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.35),rgba(0,0,0,.72));
+  animation:fadeIn .18s var(--ease);
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.banner-card{
+  min-width:min(520px,88vw);padding:32px 36px;text-align:center;border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(22,25,31,.96),rgba(10,12,15,.98));
+  border:1px solid var(--line-2);
+  box-shadow:0 40px 90px -30px #000,inset 0 1px 0 rgba(255,255,255,.06);
+  animation:bannerIn .42s var(--ease-snap) both;
+}
+@keyframes bannerIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+.banner-kicker{font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:10px;}
+.banner-title{font-family:var(--font-display);font-size:clamp(22px,4vw,36px);line-height:1.02;margin-bottom:14px;}
+.banner-price{font-family:var(--font-cond);font-size:clamp(34px,7vw,58px);font-weight:700;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums;}
+.banner-sub{margin-top:10px;font-size:12px;letter-spacing:.14em;color:var(--ink-dim);text-transform:uppercase;}
+
+/* ── boot ──────────────────────────────────────────────── */
+.boot{
+  position:absolute;inset:0;z-index:20;display:grid;place-items:center;
+  background:var(--bg);transition:opacity .5s var(--ease),visibility .5s;
+}
+.boot[hidden]{display:none;}
+.boot.done{opacity:0;visibility:hidden;pointer-events:none;}
+.boot-inner{text-align:center;}
+.boot-mark{font-family:var(--font-display);font-size:clamp(26px,5vw,44px);letter-spacing:.02em;color:var(--ink);}
+.boot-line{margin-top:12px;font-size:11px;letter-spacing:.22em;color:var(--ink-dim);}
+.boot-bar{margin:18px auto 0;width:220px;height:3px;background:rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;}
+.boot-bar span{display:block;height:100%;width:0%;background:var(--amber);transition:width .4s var(--ease);}
+
+/* ── responsive ────────────────────────────────────────── */
+@media (max-width:900px){
+  .chart{display:none;}
+  .fighters{bottom:auto;top:96px;transform:none;align-items:flex-start;}
+  .fighter{width:clamp(132px,40vw,180px);padding:10px 12px;}
+  .fighter-name{font-size:13px;}
+  .fighter-role{display:none;}
+  .bar{margin:7px 0 6px;}
+  .meter-wrap{bottom:14px;width:92vw;padding:10px 12px 8px;}
+  .meter-label{font-size:11px;}
+  .meter-foot{font-size:11px;}
+  .hint{display:none;}
+  .brand-sub{display:none;}
+  .topbar{padding:10px 14px 0;top:26px;}
+  .status{padding:6px 9px;font-size:10px;}
+}
+@media (max-width:520px){
+  .price{font-size:34px;}
+  .fighters{top:calc(50% + 4px);}
+  .fighter{width:44vw;}
+  .fighter-name{font-size:12px;}
+  .banner-card{padding:24px 20px;}
+  .boot-bar{width:160px;}
+}
+
+/* ── reduced motion ────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce){
+  .fx-grid,.fx-grain,.tape-track{animation:none;}
+  .callout,.banner-card,.fighter[data-act="hit"]{animation-duration:.01s;}
+  *{transition-duration:.01s!important;}
+}
